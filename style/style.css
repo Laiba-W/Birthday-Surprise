@@ -1,0 +1,565 @@
+/* General */
+html {
+  box-sizing: border-box;
+}
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    font-family: "Work Sans", sans-serif;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:black;
+    /*color: white;*/
+    transition: background 1s ease; /* smooth transition */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+ 
+  
+  /* STEP 1: Bulb */
+  .bulb-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    
+  }
+  
+  #bulb {
+    width: 80px;
+    height: 120px;
+    background: gray;
+    border-radius: 40px 40px 20px 20px;
+    position: relative;
+    box-shadow: 0 0 0px transparent;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  
+  .glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    filter: blur(40px);
+    transition: opacity 0.5s ease;
+  }
+  
+  #click-text {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #fff;
+  }
+  
+  /* STEP 2: Cake */
+
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Center Cake */
+.cake-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .cake {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse; /* 👈 IMPORTANT: reverse stacking */
+    align-items: center;
+  }
+  
+  
+  /* Cake Layers */
+ /* Cake Layers - thinner */
+/* Cake layers */
+.layer {
+    width: 200px;
+    height: 35px; /* thinner sponge */
+    background: linear-gradient(to bottom, #a0522d, #8b4513); /* chocolate sponge */
+    border-radius: 8px;
+    margin: 3px 0;
+    opacity: 0;
+    transform: translateY(-100vh);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
+  }
+  
+  /* Cream (simple white strip) */
+  .cream {
+    width: 180px;
+    height: 12px; /* simple thin layer */
+    background: #fff;
+    border-radius: 6px;
+    margin: 2px 0;
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+  
+  /* Candle */
+  .candle {
+    width: 15px;
+    height: 50px;
+    background: repeating-linear-gradient(
+      45deg,
+      #ff0000,
+      #ff0000 5px,
+      #ffffff 5px,
+      #ffffff 10px
+    ); /* red & white stripes */
+    margin-top: 5px;
+    opacity: 0;
+    transform: translateY(-100vh);
+    position: relative;
+    border-radius: 3px;
+  }
+  
+  /* Flame */
+  .flame {
+    width: 18px;
+    height: 28px;
+    background: radial-gradient(circle at center, yellow 40%, orange 70%, red 100%);
+    border-radius: 50% 50% 50% 50%;
+    position: absolute;
+    top: -28px;
+    left: -2px;
+    animation: flicker 0.3s infinite alternate;
+    display: none;
+    box-shadow: 0 0 15px 5px rgba(255, 200, 0, 0.6);
+  }
+  
+  /* Animation */
+  @keyframes drop {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes flicker {
+    from { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+    to { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  }
+  
+  .text {
+    margin-top: 20px;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    color: white;
+  }
+  /* Step 3 : Firework */
+  #fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* keeps it behind cake and text */
+    /*background: #000;  night sky effect */
+    background: transparent !important;
+    
+  }
+
+  /* Step 4 : Button*/
+  #surprise-btn {
+    display: none; /* hidden by default */
+    margin: 20px auto;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ffb6c1, #d8b0ff);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s, background 0.3s;
+  }
+  
+  #surprise-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #ff80ab, #b388ff);
+  }
+  
+  
+  /* fade-in effect */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  /* Step 5:Popup  */
+  /* Popup background */
+.popup {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup box */
+.popup-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  width: 80%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #000;
+}
+
+/* Close button (X) */
+#close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #888;
+}
+
+#close-popup:hover {
+  color: #ff4081;
+}
+#popupText {
+  font-size: 20px;   /* adjust size */
+  color: black;      /* change text color */
+  font-family: 'Courier New', monospace; /* optional font */
+  text-align: center; /* center text */
+}
+#nextTaskBtn {
+  display: none; /* hidden until typing finishes */
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: pink;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#nextTaskBtn:hover {
+  background: hotpink;
+  color: white;
+}
+
+/* -----------------------Step 6 : Text part ----------- */
+
+.container {
+  height: 100vh;
+  width: 100vh;
+  margin: 0 auto;
+  text-align: center;
+  visibility: hidden;
+  position: relative;
+  overflow: hidden;
+   /*color: white;  makes all child text white */
+}
+
+.container div.six {
+  top: 10vh;
+  z-index: 1;
+}
+
+.container div.seven,
+.container div.eight {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+}
+
+.container > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20vh;
+}
+
+.one {
+  font-size: 4.5rem;  
+  
+}
+
+.one > img {
+  vertical-align: middle;
+  margin-bottom: 10px;
+  max-width: 100%;
+  height: auto;
+  
+}
+
+.two {
+  font-size: 1.2rem;
+  font-weight: lighter;
+}
+
+.three {
+  font-size: 3rem;
+}
+
+.four .text-box {
+  width: 600px;
+  margin: 0 auto;
+  border: 3px solid #aaa;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+}
+
+.text-box p {
+  margin: 0;
+  text-align: left;
+}
+
+.text-box span {
+  visibility: hidden;
+}
+
+.text-box .fake-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: #fff;
+  background-color: #15ed88;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.five p {
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.idea-3 strong {
+  padding: 3px 5px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.five .idea-5 {
+  font-size: 4rem;
+}
+
+.idea-5 span,
+.idea-6 span,
+.wish-hbd span {
+  display: inline-block;
+}
+
+.idea-6 span {
+  font-size: 15rem;
+}
+
+.six {
+  position: relative;
+}
+
+.six img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+
+}
+.stanley-dp {
+  filter: grayscale(88%);
+  
+}
+
+.six .hat {
+  position: absolute;
+  width: 80px;
+  top: -35px;
+  left: 41.5%;
+  /* transform: scale(0.1); */
+}
+
+.baloons img {
+  display: inline-block;
+  position: absolute;
+}
+
+.baloons img:nth-child(even) {
+  left: -10%;
+}
+
+.baloons img:nth-child(odd) {
+  right: -10%;
+}
+
+.baloons img:nth-child(3n + 0) {
+  left: 30%;
+}
+
+.eight svg {
+  width: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  z-index: -1;
+}
+
+.eight svg:nth-child(1) {
+  top: 7vh;
+  left: 5vw;
+  fill: #bd6ecf;
+}
+
+.eight svg:nth-child(2) {
+  top: 23vh;
+  left: 35vw;
+  fill: #7dd175;
+}
+
+.eight svg:nth-child(3) {
+  top: 33vh;
+  left: 23vw;
+  fill: #349d8b;
+}
+
+.eight svg:nth-child(4) {
+  top: 43vh;
+  left: 57vw;
+  fill: #347a9d;
+}
+
+.eight svg:nth-child(5) {
+  top: 68vh;
+  left: 7vw;
+  fill: #c66053;
+}
+
+.eight svg:nth-child(6) {
+  top: 42vh;
+  left: 77vw;
+  fill: #bfaa40;
+}
+
+.eight svg:nth-child(7) {
+  top: 68vh;
+  left: 83vw;
+  fill: #e3bae8;
+}
+
+.eight svg:nth-child(8) {
+  top: 86vh;
+  left: 37vw;
+  fill: #8762cb;
+}
+
+.eight svg:nth-child(9) {
+  top: 94vh;
+  left: 87vw;
+  fill: #9a90da;
+}
+
+.wish-hbd {
+  font-size: 3em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.wish h5 {
+  font-weight: lighter;
+  font-size: 2rem;
+  margin: 10px 0 0;
+}
+
+.nine p {
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+
+/* Media Queries */
+@media screen and (max-height: 1000px) {
+  .six .hat {
+    left: 40%;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .six .hat {
+    left: 37%;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .six .hat {
+    left: 32%;
+  }
+}
+
+@media screen and (max-height: 850px) and (max-width: 450px) {
+  .six .hat {
+    left: 32%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 90%;
+  }
+
+  .four .text-box {
+    width: 90%;
+  }
+
+  .text-box .fake-btn {
+    right: 5px;
+    bottom: -38px;
+  }
+
+  .idea-5 span {
+    display: block;
+  }
+
+  .idea-6 span {
+    font-size: 10rem;
+  }
+
+  .six .hat {
+    width: 50px;
+    top: -20px;
+  }
+
+  .wish-hbd {
+    font-size: 2.2em;
+  }
+
+  .wish h5 {
+    font-size: 1.4rem;
+  }
+
+  .nine p {
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+}

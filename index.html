@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Happy Birthday Osama!!! :)</title>
+  <meta name="description" content="Happy birthday Osama">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+</head>
+<body>
+  <!-- Step 1: Bulb -->
+  <div class="bulb-container">
+    <div id="bulb">
+      <div class="glow"></div>
+    </div>
+    <p id="click-text">💡 Click Here</p>
+  </div>
+
+  <!-- Step 2: Cake (initially hidden) -->
+  <!-- Step 2: Cake (initially hidden) -->
+<div class="cake-container hidden">
+    <div class="cake">
+      <!--Base Layer -->
+      <div class="layer base"></div>
+      <div class="cream"></div>
+  
+       <!--Middle Layer -->
+      <div class="layer middle"></div>
+      <div class="cream"></div>
+  
+       <!--Top Layer -->
+      <div class="layer top"></div>
+  
+       <!--Candle-->
+      <div class="candle">
+        <div class="flame"></div>
+      </div>
+    </div> 
+    
+    <div class="text">Happy Birthday ;)🎉</div>
+    <!--Button part-->
+  
+     <div><button id="surprise-btn">Ready for the surprise?</button></div>
+    
+  </div>
+
+  <canvas id="fireworks"></canvas>
+
+
+<!-- Popup -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span id="close-popup">&times;</span>
+    <p id="popup-message"></p>
+    <button id="nextTaskBtn">Continue 🎁</button> <!-- New button -->
+  </div>
+</div>
+<div id="popupText"></div>
+
+   <!-- text -->
+   <div class="container">
+    <div class="one">
+      <h1 class="one" >Hey
+        <span id="name" >Birthday Boy</span>
+      </h1>
+      <p class="two" id="greetingText">Let's make every moment of this day special because..</p>
+    </div>
+    <div class="three">
+      <p>It's your birthday!!! 🥳</p>
+    </div>
+    <div class="four">
+      <div class="text-box">
+        <p class="hbd-chatbox">By now you may know how much important you are ;)</p>
+        <p class="fake-btn">Send</p>
+      </div>
+    </div>
+    <div class="five">
+      <p class="idea-1">It took me a lot of time to create this </p>
+      <p class="idea-2">I made it from scratch ;)</p>
+      <p class="idea-3">because it was for someone
+        <strong>special ;),</strong>.
+      </p>
+      <p class="idea-4">A brave men who is going to be very successful InshAllah and </p>
+      <p class="idea-5">A beautiful soul 😉
+        <span>:)</span>
+      </p>
+      <p class="idea-6">
+        <span>S</span>
+        <span>O</span>
+      </p>
+    </div>
+    <div class="six">
+      <img src="img/BirthdayBoy.jpeg" alt="" class="stanley-dp" id="imagePath" height="auto"  width="400px">
+      <div class="wish">
+        <h3 class="wish-hbd">Happy Birthday to you!</h3>
+        <h5 id="wishText">May all your wishes come true ;)</h5>
+      </div>
+    </div>
+    <div class="seven">
+      <div class="baloons">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon2.svg" alt="">
+        <img src="img/ballon1.svg" alt="">
+        <img src="img/ballon3.svg" alt="">
+      </div>
+    </div>
+    <div class="eight">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" />
+      </svg>
+    </div>
+    <div class="nine">
+      <p>Yes I know it is much same as yours but I couldn't find enything else ;) </p>
+      
+      <p class="last-smile">:)</p>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
